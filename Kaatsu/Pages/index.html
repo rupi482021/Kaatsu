@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/ajaxCallsWithKey.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/index.css" rel="stylesheet" />
+        <title></title>
+
+            <script>
+                $(document).ready(function () {
+
+                    videoList = localStorage.getItem('videoList')
+                videoL = JSON.parse(videoList);
+                console.log(videoL)
+                $("#personalDet").click(personalDet)
+
+                str = ""
+                str = "<div class='w3-container'>"
+                for (var i = 0; i < videoL.length; i++) {
+
+                        videoPath = videoL[i].Subtitlepath
+                    videoT = videoL[i].Caption
+                    str += "<div class='w3-card-4 divCard'>"
+                    str += "<header class='w3-container w3-light-grey'>" + "<h3 id='headerH1'>" + videoT + "</h3>"
+                    str += "</header >"
+                    str += "<div class='w3-container'>"
+                    str += "<video class='sizeV' controls='controls'>"
+                    str += "<source src='" + videoPath + "' type='video/mp4' />"
+                    str += "</video>"
+                    str += "</div>"
+                    str += "<button class='w3-button w3-block w3-dark-grey'> אהבתי!</button>"
+
+                    str += "</div>"
+
+                }
+
+
+                str += "</div>"
+                $("#ph").html(str);
+
+            });
+
+
+            function personalDet() {
+
+                    window.location = "customerDeUpdate.html"
+
+                }
+
+    </script>
+
+</head>
+<body>
+    <img class="logoF" src="Images/KaautsuIsrael.png" />
+    <div class="icon-bar">
+        <a href="customerDeUpdate.html"><i class="fa fa-address-card-o" id="personalDet"></i> עדכון פרטים אישיים </a>
+        <a href="recommendTP.html"><i class="fa fa-refresh"></i> התאמת תוכנית אימון </a>
+        <a id="active" href="index.html"><span class="fa fa-home"></span> עמוד הבית </a>
+        <a id="logOut" class="active" href="logIn.html"><i class="fa fa-user"></i> התנתקות </a>
+
+    </div>
+    <hr />
+    <!--<p id="personalDet" class="personalDe" >פרטים אישיים</p>-->
+    <div id="ph"></div>
+</body>
+</html>
